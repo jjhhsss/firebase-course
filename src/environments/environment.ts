@@ -4,17 +4,17 @@
 
 export const environment = {
   production: false,
-  useEmulators: true,
+  useEmulators: false,
   firebase: {
-      apiKey: "AIzaSyB9LOREMGhj1jpVXOHTKIwQu2oM7pVfjQg",
-      authDomain: "fir-course-recording-c7f3e.firebaseapp.com",
-      projectId: "fir-course-recording-c7f3e",
-      storageBucket: "fir-course-recording-c7f3e.appspot.com",
-      messagingSenderId: "927953565493",
-      appId: "1:927953565493:web:0d4a8e79cc45fd38733e7c"
+    apiKey: "AIzaSyD_nC644BmPDMRvDKmjJpnBzNCfTq4lspE",
+    authDomain: "blog-e0156.firebaseapp.com",
+    projectId: "blog-e0156",
+    storageBucket: "blog-e0156.appspot.com",
+    messagingSenderId: "1054351834906",
+    appId: "1:1054351834906:web:c54f4583af851ee357f6a3"
   },
   api: {
-      createUser: "http://localhost:5001/fir-course-recording-c7f3e/us-central1/createUser"
+    createUser: "http://localhost:5001/fir-course-recording-c7f3e/us-central1/createUser"
   }
 };
 

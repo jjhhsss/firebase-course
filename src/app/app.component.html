@@ -1,62 +1,30 @@
-<mat-sidenav-container fullscreen>
-
-  <mat-sidenav #start (click)="start.close()">
-    <mat-nav-list>
-
-      <a mat-list-item routerLink="/">
-        <mat-icon>library_books</mat-icon>
-        <span>Courses</span>
-      </a>
-
-      <a mat-list-item routerLink="/create-user">
-        <mat-icon>add_circle_outline</mat-icon>
-        <span>Create user</span>
-      </a>
-
-      <a mat-list-item routerLink="about">
-        <mat-icon>question_answer</mat-icon>
-        <span>About</span>
-      </a>
-      <a mat-list-item routerLink="login" *ngIf="user.isLoggedOut$ | async">
-        <mat-icon>person_add</mat-icon>
-        <span>Register</span>
-      </a>
-
-      <a mat-list-item routerLink="login" *ngIf="user.isLoggedOut$ | async">
-        <mat-icon>account_circle</mat-icon>
-        <span>Login</span>
-      </a>
-
-      <a mat-list-item *ngIf="user.isLoggedIn$ | async" (click)="logout()">
-        <mat-icon>exit_to_app</mat-icon>
-        <span>Logout</span>
-      </a>
-
-    </mat-nav-list>
-
-  </mat-sidenav>
-
-  <mat-toolbar color="primary">
-
-    <div class="toolbar-tools">
-
-      <button mat-icon-button (click)="start.open('mouse')">
-        <mat-icon>menu</mat-icon>
-      </button>
-
-      <div class="filler"></div>
-
-      <ng-container *ngIf="(user.pictureUrl$ | async) as pictureUrl">
-
-        <img class="user-avatar" [src]="pictureUrl">
-
-      </ng-container>
-
+<div class="app-component">
+  <nav>
+    <div class="logo">
+      <img class="home-button" src="./assets/images/3d-printer.png" alt="home button">
     </div>
-
-
-  </mat-toolbar>
-
-  <router-outlet></router-outlet>
-
-</mat-sidenav-container>
+    <ul class="nav-links">
+      <li><a routerLink="/" routerLinkActive="active" (click)="toggle()">blog page</a></li>
+      <li>all articles</li>
+      <li>contact</li>
+    </ul>
+    <div class="logo">
+      <h4>logo</h4>
+    </div>
+  </nav>
+  <div class="title-container" *ngIf="show">
+    <div class="title">
+      My blog about things
+    </div>
+  </div>
+  <div class="timeline" *ngIf="show">
+    <app-timeline *ngFor="let article of articles$ | async; index as i" [article]="(articles$ | async)"
+      [entryIndex]="i + 1" (click)="clicked(i)">
+    </app-timeline>
+  </div>
+  <article *ngIf="!show" [title]="this.title" [date]="this.date" [body]="this.body"></article>
+  <div class="footer">
+    <a href="https://www.flaticon.com/free-icons/3d-printing" title="3d printing icons">3d printing icons created by
+      Freepik - Flaticon</a>
+  </div>
+</div>
